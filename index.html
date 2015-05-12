@@ -1,0 +1,56 @@
+<html ng-app="tutorialApp">
+<head>
+  <meta charset="utf8" />
+  <title>Shop</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+	
+  <input type="text" ng-model="search">
+  <p ng-show="search">Du suchst gerade nach: {{search}}</p>
+
+  <table class="table" ng-controller="ArticlesCtrl">
+  <tr ng-repeat="article in articles | filter:search">
+    <td>{{article.id}}</td>
+    <td>{{article.name}}</td>
+    <td>{{article.price}}</td>
+    <td><a href class="btn btn-default btn-sm" ng-click="cart.addArticle(article);">Hinzufügen</a></td>
+    <td></td>
+  </tr>
+</table>	
+
+
+<div ng-controller="CartCtrl" style="margin-top:20px; border-top:1px solid #ccc;">
+  <div ng-hide="cart.getArticle().length" class="alert alert-warning">Ihr Warenkorb ist noch leer.</div>
+ 
+  <table ng-show="cart.getArticle().length" class="table">
+    <tr>
+	<th>Name</th>
+	<th>Preis</th>
+	<th>Anzahl</th>
+	<th>Gesamt</th>
+	<th></th>
+	<th></th>
+    </tr>
+    <tr ng-repeat="item in cart.getArticle()">
+      <td>{{item.name}}</td>
+      <td>{{item.price | currency}}</td>
+      <td>{{item.count}}</td>
+      <td>{{item.count * item.price | currency}}</td>
+      <td><td><button ng-click="cart.addArticle(item);">+</button></td>
+      <td><button ng-click="cart.removeArticle(item.id);">-</button></td>
+    </tr>
+    <tr><td style="border-top:1px solid #ccc; padding-top:10px;" colspan="3"></td></tr>
+    <tr>
+      <td>{{cart.getArticleCount()}} Artikel</td>
+      <td>{{cart.sum() | currency}}</td>
+      <td></td>
+    </tr>
+    
+  </table>
+</div>
+</body>
+</html>
