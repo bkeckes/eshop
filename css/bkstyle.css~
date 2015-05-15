@@ -1,0 +1,13 @@
+
+
+.panel{
+	background:#efefef;
+}
+.panel-heading{
+	font-size:1.7em;
+}
+
+.itembox{
+	background:#eee;
+	
+}
