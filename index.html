@@ -54,15 +54,24 @@
 								<div class="col-sm-12 col-xs-4"><img src="img/handy.png" alt="Bild" class="img-responsive img-rounded"></div>
 								<div class="col-sm-12 col-xs-8{{article.price}}">{{article.price}}</div>
 							</div>
-							<div class="col-xs-offset-4 col-sm-offset-0 panel-footer">
-								<button class="btn btn-success btn-block" ng-click="cart.addArticle(article);">anzeigen</button>
+							<div class="panel-footer">
+								<div class="row">
+									<div class="col-md-8 col-xs-8">
+										<button class="btn btn-default btn-block" ng-click="cart.addArticle(article);"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> anzeigen</button>
+									</div>
+									<div class="col-md-4 col-xs-4">
+										<button class="btn btn-success btn-block" ng-click="cart.addArticle(article);"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+									</div>
+								</div>
+								
+								
 							</div>							
 						</div>
 					</div>
 					
 				</div>
 			</div>
-			<div class="col-md-3 hidden-xs" ng-controller="CartCtrl">
+			<div class="col-md-3 hidden-xs" ng-controller="CartCtrl" id="cart">
 				<div class="panel panel-success">
 					<div class="panel-heading">Warenkorb</div>
 					<div ng-hide="cart.getArticle().length" class="panel-body"><p>Ihr Warenkorb ist noch leer</p></div>
@@ -74,18 +83,19 @@
 							<td>{{item.count * item.price | currency}}</td>
 							<td>
 								<div class="btn-group" role="group" aria-label="amount">
-								  <button type="button" class="btn btn-default" ng-click="cart.removeArticle(item.id);">-</button>
-								  <button type="button" class="btn btn-default" ng-click="cart.addArticle(item);">+</button>
+								  <button type="button" class="btn btn-default" ng-click="cart.removeArticle(item.id);"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+								  <button type="button" class="btn btn-default" ng-click="cart.addArticle(item);"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 								</div>
 							</td>
 						</tr>
-						
-						<tr>
-							<th colspan="2">{{cart.getArticleCount()}} Artikel</td>
-							<th colspan="2">{{cart.sum() | currency}}</td>
-						</tr>
 					</table>
-					
+					<div class="panel-body" ng-show="cart.getArticle().length">
+						<div class="row">
+							<div class="col-md-6 col-xs-4"><strong>{{cart.getArticleCount()}} Artikel: </strong></div>
+							<div class="col-md-6 col-xs-8"><strong>{{cart.sum() | currency}}</strong></div>
+						</div>
+					</div>
+					<div class="panel-footer" ng-show="cart.getArticle().length"><button class="btn btn-primary btn-block" ng-click="cart.addArticle(article);">Zur Kasse</button></div>
 				</div>
 					
 				
