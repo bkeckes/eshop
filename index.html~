@@ -69,7 +69,7 @@
 
 					<table class="table" ng-show="cart.getArticle().length">
 						<tr ng-repeat="item in cart.getArticle()">
-							<td> <span class="badge">{{item.count}}x</span></td>
+							<td>d<span class="badge">{{item.count}}x</span></td>
 							<td>{{item.name}}</td>
 							<td>{{item.count * item.price | currency}}</td>
 							<td>
