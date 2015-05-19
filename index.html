@@ -28,7 +28,7 @@
 	
 		<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-xs-12 col-sm-6 col-md-6">
 				<form class="form-inline">
 				  <div class="form-group">
 				    <label for="exampleInputName2">Suche</label>
@@ -41,12 +41,12 @@
 				
   				
 			</div>
-			<div class="col-md-6">
+			<div class="col-xs-12 col-sm-6 col-md-6">
 				filter
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-9">	
+			<div class="col-xs-12 col-sm-7 col-md-9">	
 				<div class="row" ng-controller="ArticlesCtrl">
 					<div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="article in articles | filter:search">
 						<div class="panel panel-default">
@@ -72,8 +72,8 @@
 					
 				</div>
 			</div>
-			<div class="col-md-3 hidden-xs" ng-controller="CartCtrl">
-				<div class="panel panel-success cartpanel">
+			<div class="hidden-xs col-sm-5 col-md-3" ng-controller="CartCtrl">
+				<div id="shca" class="panel panel-success cartpanel">
 					<div class="panel-heading"><strong>Warenkorb</strong></div>
 					<div ng-hide="cart.getArticle().length" class="panel-body window-size"><p>Ihr Warenkorb ist leer</p></div>
 
@@ -121,6 +121,9 @@
 			$(document).ready(function(){
 			    $('.window-size').height($(window).height()*0.6);
 			});
+			
+			
+		
 		</script>
 
 		
