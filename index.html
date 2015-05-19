@@ -78,7 +78,7 @@
 					<div ng-hide="cart.getArticle().length" class="panel-body window-size"><p>Ihr Warenkorb ist leer</p></div>
 
 					<div class="panel-body window-size" id="carttable" ng-show="cart.getArticle().length">
-						<table class="table" ng-show="cart.getArticle().length">
+						<table class="table table-hover" ng-show="cart.getArticle().length">
 							<tr ng-repeat="item in cart.getArticle()">
 								<td><span class="badge">{{item.count}}x</span></td>
 								<td>{{item.name}}</td>
